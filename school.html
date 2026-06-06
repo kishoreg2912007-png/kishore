@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radhaswami Vidyalayam EM School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --saffron: #E8600A;
+      --deep: #1A2744;
+      --gold: #F5B931;
+      --cream: #FDF6EC;
+      --white: #FFFFFF;
+      --light-gray: #F0EDE8;
+      --text: #2C2C2C;
+      --muted: #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* -- NAV -- */
+    nav {
+      background: var(--deep);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 0;
+      letter-spacing: .5px;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--gold); }
+
+    /* -- HERO -- */
+    .hero {
+      background: linear-gradient(135deg, var(--deep) 0%, #243568 60%, #1A2744 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(245,185,49,.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(232,96,10,.1) 0%, transparent 50%);
+    }
+    .hero-emblem {
+      width: 110px; height: 110px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 3rem;
+      box-shadow: 0 0 40px rgba(245,185,49,.4);
+      animation: pulse 3s ease-in-out infinite;
+      position: relative; z-index: 1;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 40px rgba(245,185,49,.4); }
+      50%      { box-shadow: 0 0 60px rgba(245,185,49,.7); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1.15;
+      position: relative; z-index: 1;
+      animation: fadeUp .8s ease both;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      margin-top: .6rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative; z-index: 1;
+      animation: fadeUp .8s .2s ease both;
+    }
+    .hero-tagline {
+      margin-top: 1.4rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+      position: relative; z-index: 1;
+      animation: fadeUp .8s .4s ease both;
+    }
+    .hero-divider {
+      width: 80px; height: 3px;
+      background: var(--saffron);
+      margin: 1.5rem auto 0;
+      border-radius: 2px;
+      position: relative; z-index: 1;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* -- SECTIONS -- */
+    section { padding: 4rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep);
+      margin-bottom: .4rem;
+    }
+    .section-title span { color: var(--saffron); }
+    .section-line {
+      width: 50px; height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* -- ABOUT -- */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media(max-width:600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-card {
+      background: var(--cream);
+      border-left: 4px solid var(--saffron);
+      border-radius: 0 8px 8px 0;
+      padding: 1.4rem 1.5rem;
+    }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--deep);
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .about-card p { color: var(--muted); line-height: 1.7; font-size: .95rem; }
+    .about-card strong { color: var(--text); }
+
+    /* -- HEADMASTER -- */
+    #headmaster { background: var(--deep); }
+    .hm-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(245,185,49,.25);
+      border-radius: 12px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media(max-width:600px) { .hm-card { flex-direction:column; text-align:center; } }
+    .hm-avatar {
+      flex-shrink: 0;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    #headmaster .section-title { color: var(--white); }
+    .hm-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .hm-role {
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .8rem;
+      margin-bottom: .8rem;
+    }
+    .hm-desc { color: rgba(255,255,255,.8); line-height: 1.7; font-size: .95rem; }
+
+    /* -- FACULTY -- */
+    #faculty { background: var(--light-gray); }
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+    .faculty-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .faculty-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+    .faculty-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--saffron), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto .9rem;
+      font-size: 1.6rem;
+    }
+    .faculty-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--deep);
+      margin-bottom: .2rem;
+    }
+    .faculty-card .subject {
+      color: var(--saffron);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .faculty-card .exp { color: var(--muted); font-size: .8rem; margin-top: .3rem; }
+
+    /* -- FACILITIES -- */
+    #facilities { background: var(--white); }
+    .facilities-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .facility-item {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.2rem;
+      text-align: center;
+      border-top: 3px solid var(--gold);
+      transition: border-color .2s;
+    }
+    .facility-item:hover { border-color: var(--saffron); }
+    .facility-item .icon { font-size: 1.8rem; margin-bottom: .5rem; }
+    .facility-item p { font-size: .88rem; color: var(--text); font-weight: 600; }
+
+    /* -- CONTACT -- */
+    #contact { background: var(--deep); }
+    #contact .section-title { color: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media(max-width:600px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: var(--saffron);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-label {
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: .2rem;
+    }
+    .contact-value {
+      color: var(--white);
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    /* -- FOOTER -- */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: .82rem;
+      letter-spacing: .5px;
+    }
+    footer span { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RV EM School</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#headmaster">Head Master</a></li>
+    <li><a href="#faculty">Faculty</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-emblem">??</div>
+  <h1>Radhaswami <span>Vidyalayam</span><br/>EM School</h1>
+  <p class="hero-sub">English Medium School · Est. Kundurpi</p>
+  <p class="hero-tagline">"Lighting Minds, Building Futures"</p>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About <span>Our School</span></h2>
+    <div class="section-line"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Our Vision</h3>
+        <p>To nurture every child with quality English medium education, rooted in values and inspired by knowledge — building confident citizens of tomorrow.</p>
+      </div>
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>Provide a safe, inclusive, and enriching learning environment where students excel academically and grow holistically through discipline and creativity.</p>
+      </div>
+      <div class="about-card">
+        <h3>Medium of Instruction</h3>
+        <p><strong>English Medium</strong> — All subjects taught in English to equip students with strong communication and academic skills.</p>
+      </div>
+      <div class="about-card">
+        <h3>Classes Offered</h3>
+        <p>From <strong>Pre-Primary (LKG/UKG)</strong> through <strong>Class X</strong>, covering all core and co-curricular subjects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEADMASTER -->
+<section id="headmaster">
+  <div class="container">
+    <h2 class="section-title">Head <span style="color:var(--gold)">Master</span></h2>
+    <div class="section-line"></div>
+    <div class="hm-card">
+      <div class="hm-avatar">?????</div>
+      <div>
+        <div class="hm-role">Head Master</div>
+        <div class="hm-name">Sri. Raju</div>
+        <p class="hm-desc">
+          Sri. Raju leads Radhaswami Vidyalayam EM School with dedication and vision. With years of experience in education, he is committed to academic excellence, student welfare, and building a nurturing school community that prepares children for a bright future.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty">
+  <div class="container">
+    <h2 class="section-title">Our <span>Faculty</span></h2>
+    <div class="section-line"></div>
+    <div class="faculty-grid">
+      <div class="faculty-card">
+        <div class="faculty-icon">??</div>
+        <h4>Mathematics Dept.</h4>
+        <p class="subject">Mathematics</p>
+        <p class="exp">Experienced &amp; Dedicated Staff</p>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-icon">??</div>
+        <h4>Science Dept.</h4>
+        <p class="subject">Science</p>
+        <p class="exp">Physics, Chemistry &amp; Biology</p>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-icon">??</div>
+        <h4>English Dept.</h4>
+        <p class="subject">English Language</p>
+        <p class="exp">Grammar &amp; Literature</p>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-icon">??</div>
+        <h4>Social Studies</h4>
+        <p class="subject">Social Studies</p>
+        <p class="exp">History, Geography &amp; Civics</p>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-icon">???</div>
+        <h4>Computer Dept.</h4>
+        <p class="subject">Computer Science</p>
+        <p class="exp">IT &amp; Digital Literacy</p>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-icon">??</div>
+        <h4>Arts &amp; Craft</h4>
+        <p class="subject">Arts &amp; Physical Ed.</p>
+        <p class="exp">Creative &amp; Sports Activities</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="container">
+    <h2 class="section-title">School <span>Facilities</span></h2>
+    <div class="section-line"></div>
+    <div class="facilities-list">
+      <div class="facility-item"><div class="icon">??</div><p>Library</p></div>
+      <div class="facility-item"><div class="icon">???</div><p>Computer Lab</p></div>
+      <div class="facility-item"><div class="icon">??</div><p>Science Lab</p></div>
+      <div class="facility-item"><div class="icon">?</div><p>Playground</p></div>
+      <div class="facility-item"><div class="icon">??</div><p>Mid-Day Meal</p></div>
+      <div class="facility-item"><div class="icon">??</div><p>Transport</p></div>
+      <div class="facility-item"><div class="icon">??</div><p>First Aid Room</p></div>
+      <div class="facility-item"><div class="icon">??</div><p>Activity Hall</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact <span style="color:var(--gold)">Us</span></h2>
+    <div class="section-line"></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">??</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">Kundurpi, Near Police Station,<br/>515766</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">??</div>
+        <div>
+          <div class="contact-label">Phone Number</div>
+          <div class="contact-value">123456789</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">?????</div>
+        <div>
+          <div class="contact-label">Head Master</div>
+          <div class="contact-value">Sri. Raju</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">??</div>
+        <div>
+          <div class="contact-label">School Hours</div>
+          <div class="contact-value">Mon – Sat: 9:00 AM – 4:30 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 <span>Radhaswami Vidyalayam EM School</span> · Kundurpi · All Rights Reserved
+</footer>
+
+</body>
+</html>
